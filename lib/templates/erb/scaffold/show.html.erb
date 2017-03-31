@@ -1,0 +1,10 @@
+
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+<p>
+  <strong><%= attribute.human_name %>:</strong>
+  <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
+</p>
+
+<% end -%>
+<%%= link_to fa_icon('edit 2x'), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>, locale: I18n.locale) %> |
+<%%= link_to fa_icon('arrow-circle-left 2x'), <%= index_helper %>_path(locale: I18n.locale) %>

@@ -1,0 +1,20 @@
+<h2><%= t('.Posts') %></h2>
+
+<hr>
+
+<div>
+  <% @posts.each do |post| %>
+    <div class="content">
+      <p><%= post.title %></p>
+      <p><%= post.content %></p>
+      <p><%= post.user %></p>
+      <p><%= link_to t('show'), post_path(post, locale: I18n.locale) %></p>
+      <p><%= link_to t('edit'), edit_post_path(post,locale: I18n.locale) %></p>
+      <p><%= link_to t('delete'), post_path(post, locale: I18n.locale), method: :delete, data: { confirm: t('are_you_sure') } %></p>
+    </div>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to fa_icon('plus 2x'), new_post_path( locale:I18n.locale) %>

@@ -1,0 +1,15 @@
+<% if @post.errors.any? %>
+  <% @post.errors.full_messages.each do |error| %>
+    <li><%= alert_generator error %></li>
+  <% end %>
+<% end %>
+
+            <div class="from-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class:"form-control" %>
+      </div>
+                  <div class="from-group">
+        <%= f.label :content %>
+        <%= f.text_area :content, class:"form-control" %>
+      </div>
+              

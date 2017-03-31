@@ -1,0 +1,20 @@
+<h2><%%= t('.<%= plural_table_name.titleize %>') %></h2>
+
+<hr>
+
+<div>
+  <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+    <div class="content">
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+      <p><%%= <%= singular_table_name %>.<%= attribute.name %> %></p>
+<% end -%>
+      <p><%%= link_to t('show'), <%= singular_table_name %>_path(<%= singular_table_name %>, locale: I18n.locale) %></p>
+      <p><%%= link_to t('edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>,locale: I18n.locale) %></p>
+      <p><%%= link_to t('delete'), <%= singular_table_name %>_path(<%= singular_table_name %>, locale: I18n.locale), method: :delete, data: { confirm: t('are_you_sure') } %></p>
+    </div>
+  <%% end %>
+</div>
+
+<br>
+
+<%%= link_to fa_icon('plus 2x'), new_<%= singular_table_name %>_path( locale:I18n.locale) %>

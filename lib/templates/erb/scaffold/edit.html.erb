@@ -1,0 +1,12 @@
+<h1><%%= t('editing') %>  <%= singular_table_name.titleize %></h1>
+<%%= form_for(@<%= singular_table_name %>, url:<%= singular_table_name %>_path(@<%= singular_table_name %>, locale: I18n.locale) ) do |f| %>
+
+  <%%= render 'form', f:f %>
+
+  <div class="form-group">
+    <%%= f.submit t('.update'), class:"btn btn-primary" %>
+  </div>
+  <%% end %>
+
+<%%= link_to fa_icon('folder-open-o'), <%= singular_table_name %>_path(@<%= singular_table_name %>, locale:I18n.locale) %> |
+<%%= link_to fa_icon('arrow-circle-left'), <%= index_helper %>_path(locale:I18n.locale) %>

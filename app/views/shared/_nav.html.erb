@@ -1,0 +1,32 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse blog-nav">
+  <button class="navbar-toggler navbar-toggler-right" type="button"
+    data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="container">
+    <%= link_to "HOME", root_path, class:"navbar-brand h3"%>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <%= nav_helper "nav-link", "li"%>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= t('languages') %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to locale: "en" do %>
+              <%= content_tag :span, "English", :class => "dropdown-item" %>
+            <% end %>
+            <%= link_to locale: "pt" do %>
+              <%= content_tag :span, "Português", :class => "dropdown-item" %>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav pull-right">
+        <%= login_helper "nav-link "%>
+      </ul>
+    </div>
+  </div>
+</nav>

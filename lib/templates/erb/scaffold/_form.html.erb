@@ -1,0 +1,25 @@
+<%% if @<%= singular_table_name %>.errors.any? %>
+  <%% @<%= singular_table_name %>.errors.full_messages.each do |error| %>
+    <li><%%= alert_generator error %></li>
+  <%% end %>
+<%% end %>
+
+<% attributes.each do |attribute| -%>
+  <% if attribute.password_digest? -%>
+    <div class="form-group">
+      <%%= f.label :password %>
+      <%%= f.password_field :password , class:"form-control"%>
+    </div>
+    <div class="from-group">
+      <%%= f.label :password_confirmation %>
+      <%%= f.password_field :password_confirmation , class:"form-control"%>
+    </div>
+  <% else -%>
+    <% unless attribute.type == :references && attribute.name == "user" -%>
+      <div class="from-group">
+        <%%= f.label :<%= attribute.column_name %> %>
+        <%%= f.<%= attribute.field_type %> :<%= attribute.column_name %>, class:"form-control" %>
+      </div>
+    <% end -%>
+  <% end -%>
+<% end -%>

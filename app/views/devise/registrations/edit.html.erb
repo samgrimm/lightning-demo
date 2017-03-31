@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-block">
+    <div class="row">
+      <div class="col-md-8">
+        <h2><%= t('.title') %></h2>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name,locale: I18n.locale), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="form-group">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, class:"form-control" %>
+          </div>
+
+      
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <div class="form-group">
+            <%= f.label :password %> <i>(<%= t('.leave_blank')%>)</i><br />
+            <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
+            <% if @minimum_password_length %>
+              <br />
+              <em><%= @minimum_password_length %> <%= t('.characters_minimum') %></em>
+            <% end %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off" , class:"form-control"%>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :current_password, t('.current_password') %> <i>(<%= t('.confirm_changes')%>)</i><br />
+            <%= f.password_field :current_password, autocomplete: "off" , class:"form-control"%>
+          </div>
+
+          <div class="actions">
+            <%= f.submit t(".update"), class: "btn btn-primary" %>
+          </div>
+        <% end %>
+        <div class="auth-links">
+          <%= link_to t("back"), :back %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3><%= t('.cancel')%></h3>
+
+        <p><%= t('.unhappy') %><%= button_to t('.cancel'), registration_path(resource_name, locale: I18n.locale), data: { confirm: t('confirm') }, method: :delete, class:"btn btn-danger" %></p>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>

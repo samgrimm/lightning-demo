@@ -1,0 +1,12 @@
+<h1><%%= t('adding') %> <%= singular_table_name.titleize %></h1>
+
+<%%= form_for(@<%= singular_table_name %>, url:<%= plural_table_name %>_path( locale: I18n.locale) ) do |f| %>
+
+  <%%= render 'form',  f: f %>
+
+  <div class="form-group">
+    <%%= f.submit t('.create'), class:'btn btn-primary' %>
+  </div>
+  <%% end %>
+
+<%%= link_to fa_icon('arrow-circle-left 2x'), <%= index_helper %>_path(locale:I18n.locale) %>
